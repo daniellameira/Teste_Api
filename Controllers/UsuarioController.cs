@@ -1,6 +1,7 @@
 ﻿using CadastroUsuario.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -137,7 +138,91 @@ namespace CadastroUsuario.Controllers
             return Ok(usuario);
         }
 
+        public IHttpActionResult PostNovoUsuario(UsuarioEnderecoDTO usuario)
+        {
+            if (!ModelState.IsValid || usuario == null)
+                return BadRequest("Dados do usuário inválidos.");
+            using (var ctx = new AppDbContext())
+            {
+                ctx.Usuarios.Add(new Usuario()
+                {
+                    Nome = usuario.Nome,
+                    Email = usuario.Email,
+                    CPF = usuario.Cpf,
+                    Telefone = usuario.Telefone,
+                    Endereco = new Endereco()
+                    {
+                        Local = usuario.Local,
+                        Cidade = usuario.Cidade,
+                        Estado = usuario.Estado
+                    }
+                });
+                ctx.SaveChanges();
+            }
+            return Ok(usuario);
+        }
+        public IHttpActionResult Put(Usuario usuario)
+        {
+            if (!ModelState.IsValid || usuario == null)
+                return BadRequest("Dados do usuário inválidos");
+            using (var ctx = new AppDbContext())
+            {
+                var usuarioSelecionado = ctx.Usuarios.Where(c => c.Id == usuario.Id)
+                                                           .FirstOrDefault<Usuario>();
+                if (usuarioSelecionado != null)
+                {
+                    usuarioSelecionado.Nome = usuario.Nome;
+                    usuarioSelecionado.Email = usuario.Email;
+                    usuarioSelecionado.CPF = usuario.CPF;
+                    usuarioSelecionado.Telefone = usuario.Telefone;
+                    ctx.Entry(usuarioSelecionado).State = EntityState.Modified;
+                    var enderecoSelecionado = ctx.Enderecos.Where(e =>
+                                                  e.EnderecoId == usuarioSelecionado.Endereco.EnderecoId)
+                                                  .FirstOrDefault<Endereco>();
+                    if (enderecoSelecionado != null)
+                    {
+                        enderecoSelecionado.Local = usuario.Endereco.Local;
+                        enderecoSelecionado.Cidade = usuario.Endereco.Cidade;
+                        enderecoSelecionado.Estado = usuario.Endereco.Estado;
+                        ctx.Entry(enderecoSelecionado).State = EntityState.Modified;
+                    }
+                    ctx.SaveChanges();
+                }
+                else
+                {
+                    return NotFound();
+                }
+            }
+            return Ok($"Usuário {usuario.Nome} atualizado com sucesso");
+        }
 
+        public IHttpActionResult Delete(int? id)
+        {
+            if (id == null)
+                return BadRequest("Dados inválidos");
+            using (var ctx = new AppDbContext())
+            {
+                var usuarioSelecionado = ctx.Usuarios.Where(c => c.Id == id)
+                                                           .FirstOrDefault<Usuario>();
+                if (usuarioSelecionado != null)
+                {
+                    ctx.Entry(usuarioSelecionado).State = EntityState.Deleted;
+                    var enderecoSelecionado = ctx.Enderecos.Where(e =>
+                                             e.EnderecoId == usuarioSelecionado.EnderecoId)
+                                             .FirstOrDefault<Endereco>();
+                    if (enderecoSelecionado != null)
+                    {
+                        ctx.Entry(enderecoSelecionado).State = EntityState.Deleted;
+                    }
+                    ctx.SaveChanges();
+                }
+                else
+                {
+                    return NotFound();
+                }
+            }
+            return Ok($"Usuário {id} foi deletado com sucesso");
+        }
 
     }
 }
