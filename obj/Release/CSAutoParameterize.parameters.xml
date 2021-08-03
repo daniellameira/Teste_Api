@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <parameters>
-  <parameter name="TestePratico-Web.config Connection String" description="TestePratico A Cadeia de Conexão usada em web.config pelo aplicativo para acessar o banco de dados." defaultValue="Data Source=localhost\SQLEXPRESS;User id=sa; Password=daniel@1995;Initial Catalog=DB_TESTE_PRATICO; Timeout=1000; " tags="SqlConnectionString">
+  <parameter name="TestePratico-Web.config Connection String" description="TestePratico A Cadeia de Conexão usada em web.config pelo aplicativo para acessar o banco de dados." defaultValue="Data Source=localhost\SQLEXPRESS;User id=sa; Password=daniel@1995;Initial Catalog=DB_TESTE_PRATICO; Timeout=100; " tags="SqlConnectionString">
     <parameterEntry kind="XmlFile" scope="C:\\Users\\Dev\\Documents\\Api\\CadastroUsuario\\CadastroUsuario\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='TestePratico']/@connectionString" />
   </parameter>
 </parameters>

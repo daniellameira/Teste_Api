@@ -69,10 +69,10 @@ C:\Users\Dev\Documents\Api\CadastroUsuario\CadastroUsuario\bin\pt-br\System.Web.
 C:\Users\Dev\Documents\Api\CadastroUsuario\CadastroUsuario\bin\pt-br\System.Web.WebPages.resources.dll
 C:\Users\Dev\Documents\Api\CadastroUsuario\CadastroUsuario\bin\pt-br\System.Web.WebPages.Deployment.resources.dll
 C:\Users\Dev\Documents\Api\CadastroUsuario\CadastroUsuario\bin\pt-br\System.Web.WebPages.Razor.resources.dll
-C:\Users\Dev\Documents\Api\CadastroUsuario\CadastroUsuario\obj\Debug\CadastroUsuario.csproj.AssemblyReference.cache
 C:\Users\Dev\Documents\Api\CadastroUsuario\CadastroUsuario\obj\Debug\CadastroUsuario.Migrations.inicial.resources
 C:\Users\Dev\Documents\Api\CadastroUsuario\CadastroUsuario\obj\Debug\CadastroUsuario.csproj.GenerateResource.cache
 C:\Users\Dev\Documents\Api\CadastroUsuario\CadastroUsuario\obj\Debug\CadastroUsuario.csproj.CoreCompileInputs.cache
 C:\Users\Dev\Documents\Api\CadastroUsuario\CadastroUsuario\obj\Debug\CadastroUsuario.csproj.CopyComplete
 C:\Users\Dev\Documents\Api\CadastroUsuario\CadastroUsuario\obj\Debug\CadastroUsuario.dll
 C:\Users\Dev\Documents\Api\CadastroUsuario\CadastroUsuario\obj\Debug\CadastroUsuario.pdb
+C:\Users\Dev\Documents\Api\CadastroUsuario\CadastroUsuario\obj\Debug\CadastroUsuario.csproj.AssemblyReference.cache
